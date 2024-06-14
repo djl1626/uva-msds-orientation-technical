@@ -31,13 +31,12 @@ def solveProblem2():
 
 
 def isPrime(n):
-    sqrt = np.sqrt(n)
     if n == 2:
         return True
     elif n % 2 == 0:
-        return True
+        return False
     factor = 3
-    while factor <= sqrt:
+    while factor <= int(np.sqrt(n) + 1):
         if n % factor == 0:
             return False
         factor += 2
@@ -48,9 +47,11 @@ def solveProblem3():
     max = 3
     j = 3
     num = 600851475143
-    while j < np.sqrt(num):
+    while num > 1:
         if num % j == 0 and isPrime(j):
             max = j
+        while num % j == 0:
+            num /= j
         j += 1
     print("Problem 3: " + str(max))
 
@@ -67,5 +68,5 @@ def plotHistograms():
     plt.show()
 
 
-if __name__ == "__main_":
+if __name__ == "__main__":
     plotHistograms()
