@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.stats import norm
 """Project Euler Problem 1"""
 
 
@@ -68,5 +69,15 @@ def plotHistograms():
     plt.show()
 
 
+def normalDistribution():
+    binomial = np.random.binomial(100, .1, 1000)
+    x = np.linspace(0, 20, 100)
+    y = norm.pdf(x, 10, np.sqrt(9))
+    plt.hist(binomial, alpha=.75, density=True)
+    plt.plot(x, y, color='black')
+    plt.savefig(
+        "/Users/djl47/Documents/Graduate School/uva-msds-orientation-technical/Python/normal-binomial-approx.png")
+
+
 if __name__ == "__main__":
-    plotHistograms()
+    normalDistribution()
